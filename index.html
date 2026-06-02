@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkHub — Найди работу мечты</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ========== MODALS ========== -->
+
+<!-- Auth Modal -->
+<div id="authModal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchTab('login')">Вход</button>
+      <button class="tab-btn" onclick="switchTab('register')">Регистрация</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="tab-content active">
+      <h2 class="modal-title">С возвращением</h2>
+      <p class="modal-sub">Войдите, чтобы продолжить поиск</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" />
+      </div>
+      <div id="loginError" class="form-error hidden"></div>
+      <button class="btn-primary full" onclick="doLogin()">Войти</button>
+      <p class="form-hint">Нет аккаунта? <span class="link" onclick="switchTab('register')">Зарегистрируйтесь</span></p>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="tab-content">
+      <h2 class="modal-title">Создать аккаунт</h2>
+      <p class="modal-sub">Начните поиск работы прямо сейчас</p>
+      <div class="form-group">
+        <label>Имя</label>
+        <input type="text" id="regName" placeholder="Иван Иванов" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="regEmail" placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Пароль</label>
+        <input type="password" id="regPassword" placeholder="Минимум 6 символов" />
+      </div>
+      <div id="regError" class="form-error hidden"></div>
+      <button class="btn-primary full" onclick="doRegister()">Зарегистрироваться</button>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal -->
+<div id="jobModal" class="modal-overlay hidden">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('jobModal')">✕</button>
+    <div id="jobModalContent"></div>
+  </div>
+</div>
+
+<!-- Profile Modal -->
+<div id="profileModal" class="modal-overlay hidden">
+  <div class="modal modal-wide">
+    <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
+    <div class="profile-tabs">
+      <button class="tab-btn active" onclick="switchProfileTab('info')">Мои данные</button>
+      <button class="tab-btn" onclick="switchProfileTab('resume')">Резюме</button>
+    </div>
+
+    <!-- Profile Info -->
+    <div id="profileInfo" class="tab-content active">
+      <h2 class="modal-title">Личный кабинет</h2>
+      <div class="avatar-section">
+        <div class="avatar-big" id="avatarBig"></div>
+        <div>
+          <div id="profileNameDisplay" class="profile-name-display"></div>
+          <div id="profileEmailDisplay" class="profile-email-display"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Имя</label>
+        <input type="text" id="editName" />
+      </div>
+      <div class="form-group">
+        <label>Должность</label>
+        <input type="text" id="editPosition" placeholder="Frontend Developer" />
+      </div>
+      <div class="form-group">
+        <label>Город</label>
+        <input type="text" id="editCity" placeholder="Москва" />
+      </div>
+      <div class="form-group">
+        <label>О себе</label>
+        <textarea id="editBio" rows="3" placeholder="Расскажите о себе..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="saveProfile()">Сохранить изменения</button>
+      <div id="profileSaved" class="form-success hidden">✓ Сохранено!</div>
+    </div>
+
+    <!-- Resume -->
+    <div id="profileResume" class="tab-content">
+      <h2 class="modal-title">Моё резюме</h2>
+      <div class="form-group">
+        <label>Желаемая должность</label>
+        <input type="text" id="resumePosition" placeholder="Frontend Developer" />
+      </div>
+      <div class="form-group">
+        <label>Ожидаемая зарплата (₽)</label>
+        <input type="number" id="resumeSalary" placeholder="150000" />
+      </div>
+      <div class="form-group">
+        <label>Занятость</label>
+        <select id="resumeEmployment">
+          <option>Полная занятость</option>
+          <option>Частичная занятость</option>
+          <option>Проектная работа</option>
+          <option>Стажировка</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Опыт работы (кратко)</label>
+        <textarea id="resumeExperience" rows="4" placeholder="Компания, должность, период..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Навыки</label>
+        <input type="text" id="resumeSkills" placeholder="JavaScript, React, CSS..." />
+      </div>
+      <div class="form-group">
+        <label>Образование</label>
+        <input type="text" id="resumeEducation" placeholder="МГУ, Информатика, 2020" />
+      </div>
+      <button class="btn-primary" onclick="saveResume()">Сохранить резюме</button>
+      <div id="resumeSaved" class="form-success hidden">✓ Резюме обновлено!</div>
+
+      <div id="resumePreview" class="resume-preview hidden">
+        <h3>Предпросмотр резюме</h3>
+        <div id="resumePreviewContent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo" onclick="showPage('home')">Work<span>Hub</span></div>
+    <nav class="nav">
+      <a onclick="showPage('home')" class="nav-link active" id="nav-home">Вакансии</a>
+      <a onclick="showPage('favorites')" class="nav-link" id="nav-favorites">
+        Избранное <span id="favBadge" class="badge hidden">0</span>
+      </a>
+    </nav>
+    <div class="header-actions">
+      <div id="guestActions">
+        <button class="btn-outline" onclick="openModal('authModal')">Войти</button>
+      </div>
+      <div id="userActions" class="hidden">
+        <div class="user-chip" onclick="openModal('profileModal')">
+          <div class="avatar-sm" id="avatarSm"></div>
+          <span id="headerUserName"></span>
+        </div>
+        <button class="btn-ghost" onclick="doLogout()">Выйти</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HOME PAGE ========== -->
+<div id="homePage" class="page active">
+
+  <!-- News Slider -->
+  <section class="slider-section">
+    <div class="slider-wrapper">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide slide-1">
+          <div class="slide-content">
+            <span class="slide-tag">Тренды</span>
+            <h2>IT-рынок 2025: зарплаты выросли на 23%</h2>
+            <p>Исследование WorkHub: средняя зарплата разработчиков достигла 280 000 ₽</p>
+          </div>
+        </div>
+        <div class="slide slide-2">
+          <div class="slide-content">
+            <span class="slide-tag">Карьера</span>
+            <h2>Топ-10 навыков, которые работодатели ищут прямо сейчас</h2>
+            <p>AI, облачные технологии и аналитика данных — в лидерах спроса</p>
+          </div>
+        </div>
+        <div class="slide slide-3">
+          <div class="slide-content">
+            <span class="slide-tag">Удалёнка</span>
+            <h2>68% компаний перешли на гибридный формат</h2>
+            <p>Как найти работу с полной удалёнкой в 2025 году</p>
+          </div>
+        </div>
+        <div class="slide slide-4">
+          <div class="slide-content">
+            <span class="slide-tag">Советы</span>
+            <h2>Как написать резюме, которое пройдёт ATS-фильтр</h2>
+            <p>Практическое руководство от HR-экспертов WorkHub</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn slider-prev" onclick="slidePrev()">&#8592;</button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="slider-btn slider-next" onclick="slideNext()">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- Search & Filters -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="searchInput" placeholder="Должность, компания или ключевое слово..." oninput="applyFilters()" />
+        </div>
+        <button class="btn-primary" onclick="applyFilters()">Найти</button>
+      </div>
+      <div class="filters-row">
+        <select id="filterCity" onchange="applyFilters()">
+          <option value="">Все города</option>
+          <option>Москва</option>
+          <option>Санкт-Петербург</option>
+          <option>Новосибирск</option>
+          <option>Екатеринбург</option>
+          <option>Казань</option>
+          <option>Удалённо</option>
+        </select>
+        <select id="filterSphere" onchange="applyFilters()">
+          <option value="">Все сферы</option>
+          <option>IT / Разработка</option>
+          <option>Дизайн</option>
+          <option>Маркетинг</option>
+          <option>Финансы</option>
+          <option>Продажи</option>
+          <option>HR</option>
+        </select>
+        <select id="filterExp" onchange="applyFilters()">
+          <option value="">Любой опыт</option>
+          <option>Без опыта</option>
+          <option>1–3 года</option>
+          <option>3–6 лет</option>
+          <option>Более 6 лет</option>
+        </select>
+        <select id="filterType" onchange="applyFilters()">
+          <option value="">Любой тип</option>
+          <option>Полная занятость</option>
+          <option>Частичная занятость</option>
+          <option>Удалённая работа</option>
+          <option>Стажировка</option>
+        </select>
+        <button class="btn-ghost btn-sm" onclick="resetFilters()">Сбросить</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jobs List -->
+  <section class="jobs-section">
+    <div class="container">
+      <div class="jobs-header">
+        <h2 class="jobs-count" id="jobsCount"></h2>
+        <select id="sortJobs" onchange="applyFilters()">
+          <option value="date">По дате</option>
+          <option value="salary_desc">Зарплата ↓</option>
+          <option value="salary_asc">Зарплата ↑</option>
+          <option value="rating">По рейтингу</option>
+        </select>
+      </div>
+      <div class="jobs-grid" id="jobsGrid"></div>
+      <div id="noJobs" class="no-results hidden">
+        <div class="no-results-icon">🔍</div>
+        <h3>Ничего не найдено</h3>
+        <p>Попробуйте изменить параметры поиска</p>
+        <button class="btn-outline" onclick="resetFilters()">Сбросить фильтры</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========== FAVORITES PAGE ========== -->
+<div id="favoritesPage" class="page hidden">
+  <div class="container">
+    <h1 class="page-title">Избранные вакансии</h1>
+    <div class="jobs-grid" id="favoritesGrid"></div>
+    <div id="noFavorites" class="no-results hidden">
+      <div class="no-results-icon">⭐</div>
+      <h3>Список избранного пуст</h3>
+      <p>Добавляйте понравившиеся вакансии, нажимая на звёздочку</p>
+      <button class="btn-primary" onclick="showPage('home')">Перейти к вакансиям</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="logo">Work<span>Hub</span></div>
+    <p class="footer-text">© 2025 WorkHub. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="#">О нас</a>
+      <a href="#">Для работодателей</a>
+      <a href="#">Помощь</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
