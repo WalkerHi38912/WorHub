@@ -10,6 +10,7 @@ const JOBS_DATA = [
     salary: { from: 250000, to: 350000 }, city: 'Москва',
     sphere: 'IT / Разработка', exp: '3–6 лет', type: 'Полная занятость',
     rating: 4.8, reviews: 1243,
+    activity: { responseTime: '1–2 дня', viewRate: 94, closeTime: '8 дней', level: 'high' },
     tags: ['React', 'TypeScript', 'GraphQL'],
     remote: false, hot: true,
     date: '2025-06-10',
@@ -22,6 +23,7 @@ const JOBS_DATA = [
     salary: { from: 180000, to: 240000 }, city: 'Москва',
     sphere: 'Дизайн', exp: '1–3 года', type: 'Полная занятость',
     rating: 4.6, reviews: 892,
+    activity: { responseTime: '3–5 дней', viewRate: 78, closeTime: '14 дней', level: 'medium' },
     tags: ['Figma', 'Prototyping', 'Design System'],
     remote: false, hot: false,
     date: '2025-06-09',
@@ -34,6 +36,7 @@ const JOBS_DATA = [
     salary: { from: 220000, to: 300000 }, city: 'Санкт-Петербург',
     sphere: 'IT / Разработка', exp: '3–6 лет', type: 'Удалённая работа',
     rating: 4.4, reviews: 654,
+    activity: { responseTime: '1–3 дня', viewRate: 88, closeTime: '10 дней', level: 'high' },
     tags: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
     remote: true, hot: true,
     date: '2025-06-08',
@@ -46,6 +49,7 @@ const JOBS_DATA = [
     salary: { from: 200000, to: 280000 }, city: 'Москва',
     sphere: 'IT / Разработка', exp: '1–3 года', type: 'Полная занятость',
     rating: 4.2, reviews: 523,
+    activity: { responseTime: '5–7 дней', viewRate: 61, closeTime: '21 день', level: 'low' },
     tags: ['Python', 'ML', 'PyTorch', 'SQL'],
     remote: false, hot: false,
     date: '2025-06-07',
@@ -58,6 +62,7 @@ const JOBS_DATA = [
     salary: { from: 160000, to: 220000 }, city: 'Москва',
     sphere: 'IT / Разработка', exp: '3–6 лет', type: 'Гибридный',
     rating: 4.7, reviews: 768,
+    activity: { responseTime: '2–4 дня', viewRate: 82, closeTime: '12 дней', level: 'high' },
     tags: ['Product Strategy', 'Agile', 'Analytics'],
     remote: false, hot: false,
     date: '2025-06-06',
@@ -70,6 +75,7 @@ const JOBS_DATA = [
     salary: { from: 80000, to: 120000 }, city: 'Удалённо',
     sphere: 'IT / Разработка', exp: 'Без опыта', type: 'Удалённая работа',
     rating: 4.5, reviews: 1102,
+    activity: { responseTime: '1 день', viewRate: 96, closeTime: '7 дней', level: 'high' },
     tags: ['Тестирование', 'Postman', 'SQL'],
     remote: true, hot: false,
     date: '2025-06-05',
@@ -82,6 +88,7 @@ const JOBS_DATA = [
     salary: { from: 240000, to: 320000 }, city: 'Екатеринбург',
     sphere: 'IT / Разработка', exp: 'Более 6 лет', type: 'Полная занятость',
     rating: 4.1, reviews: 312,
+    activity: { responseTime: '7–10 дней', viewRate: 55, closeTime: '30 дней', level: 'low' },
     tags: ['Kubernetes', 'Terraform', 'AWS', 'CI/CD'],
     remote: false, hot: true,
     date: '2025-06-04',
@@ -94,6 +101,7 @@ const JOBS_DATA = [
     salary: { from: 100000, to: 150000 }, city: 'Москва',
     sphere: 'Маркетинг', exp: '1–3 года', type: 'Полная занятость',
     rating: 3.9, reviews: 287,
+    activity: { responseTime: '5–8 дней', viewRate: 49, closeTime: '25 дней', level: 'low' },
     tags: ['SMM', 'Google Ads', 'Аналитика'],
     remote: false, hot: false,
     date: '2025-06-03',
@@ -106,6 +114,7 @@ const JOBS_DATA = [
     salary: { from: 130000, to: 180000 }, city: 'Санкт-Петербург',
     sphere: 'HR', exp: '3–6 лет', type: 'Полная занятость',
     rating: 3.7, reviews: 445,
+    activity: { responseTime: '4–6 дней', viewRate: 67, closeTime: '18 дней', level: 'medium' },
     tags: ['HR', 'Рекрутинг', 'T&D'],
     remote: false, hot: false,
     date: '2025-06-02',
@@ -118,6 +127,7 @@ const JOBS_DATA = [
     salary: { from: 150000, to: 200000 }, city: 'Москва',
     sphere: 'Финансы', exp: '1–3 года', type: 'Полная занятость',
     rating: 4.0, reviews: 621,
+    activity: { responseTime: '3–5 дней', viewRate: 72, closeTime: '16 дней', level: 'medium' },
     tags: ['Excel', 'Power BI', 'Финансовое моделирование'],
     remote: false, hot: false,
     date: '2025-06-01',
@@ -130,6 +140,7 @@ const JOBS_DATA = [
     salary: { from: 90000, to: 160000 }, city: 'Новосибирск',
     sphere: 'Продажи', exp: '1–3 года', type: 'Полная занятость',
     rating: 4.3, reviews: 387,
+    activity: { responseTime: '2–3 дня', viewRate: 85, closeTime: '11 дней', level: 'high' },
     tags: ['B2B продажи', 'CRM', 'Переговоры'],
     remote: false, hot: false,
     date: '2025-05-30',
@@ -142,6 +153,7 @@ const JOBS_DATA = [
     salary: { from: 210000, to: 290000 }, city: 'Москва',
     sphere: 'IT / Разработка', exp: '3–6 лет', type: 'Гибридный',
     rating: 4.5, reviews: 534,
+    activity: { responseTime: '2–4 дня', viewRate: 80, closeTime: '13 дней', level: 'high' },
     tags: ['Swift', 'SwiftUI', 'iOS'],
     remote: false, hot: true,
     date: '2025-05-29',
@@ -268,9 +280,11 @@ function updateAuthUI() {
 function switchProfileTab(tab) {
   document.querySelectorAll('#profileModal .tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('#profileModal .tab-content').forEach(c => c.classList.remove('active'));
-  document.getElementById(tab === 'info' ? 'profileInfo' : 'profileResume').classList.add('active');
-  const btns = document.querySelectorAll('#profileModal .tab-btn');
-  btns[tab === 'info' ? 0 : 1].classList.add('active');
+  const tabMap = { info: 'profileInfo', resume: 'profileResume', applications: 'profileApplications' };
+  const btnIdx = { info: 0, resume: 1, applications: 2 };
+  document.getElementById(tabMap[tab]).classList.add('active');
+  document.querySelectorAll('#profileModal .tab-btn')[btnIdx[tab]].classList.add('active');
+  if (tab === 'applications') renderApplications();
 }
 
 document.getElementById('profileModal').addEventListener('click', function(e) {
@@ -474,6 +488,8 @@ function renderJobCard(job, delay = 0) {
     job.hot ? '<span class="tag hot">🔥 Горячая</span>' : '',
   ].join('');
 
+  const activityHtml = job.activity ? renderActivityBadge(job.activity) : '';
+
   return `
     <div class="job-card" style="animation-delay:${delay * 0.05}s" onclick="openJobModal(${job.id})">
       <div class="card-header">
@@ -486,6 +502,7 @@ function renderJobCard(job, delay = 0) {
       <div class="company-name">${job.company}</div>
       <div class="salary">${salaryStr}</div>
       <div class="rating">${stars}<span class="rating-value">${job.rating} (${job.reviews.toLocaleString('ru-RU')} отзывов)</span></div>
+      ${activityHtml}
       <div class="card-tags">${tagsHtml}</div>
       <div class="card-footer">
         <span class="card-location">📍 ${job.city}</span>
@@ -535,6 +552,7 @@ function openJobModal(id) {
         </div>
       </div>
       <div class="job-detail-salary">${salaryStr}</div>
+      ${job.activity ? renderActivityBlock(job.activity) : ''}
       <div class="job-detail-meta">
         <div class="meta-item"><span>📍</span>${job.city}</div>
         <div class="meta-item"><span>💼</span>${job.type}</div>
@@ -578,7 +596,247 @@ function applyToJob(id) {
     return;
   }
   const job = JOBS_DATA.find(j => j.id === id);
-  alert(`✅ Отклик на вакансию "${job.title}" в ${job.company} отправлен!\n\nВаше резюме передано работодателю.`);
+  const applied = JSON.parse(localStorage.getItem('wh_applications_' + currentUser.email) || '[]');
+  if (applied.find(a => a.jobId === id)) {
+    showApplyStatus(job);
+    return;
+  }
+  openApplyModal(job);
+}
+
+function openApplyModal(job) {
+  const existing = document.getElementById('applyModal');
+  if (existing) existing.remove();
+  const modal = document.createElement('div');
+  modal.id = 'applyModal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal" style="max-width:500px">
+      <button class="modal-close" onclick="closeModal('applyModal')">✕</button>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div class="company-logo" style="width:48px;height:48px;font-size:22px">${job.logo}</div>
+        <div>
+          <div style="font-weight:700;font-size:15px">${job.title}</div>
+          <div style="color:var(--text3);font-size:13px">${job.company}</div>
+        </div>
+      </div>
+      <h2 class="modal-title">Сопроводительное письмо</h2>
+      <p class="modal-sub">Расскажите работодателю, почему вы подходите на эту позицию. Персонализированные отклики рассматриваются в 3× быстрее.</p>
+      <div class="form-group">
+        <label>Почему вы хотите работать в ${job.company}?</label>
+        <textarea id="applyMotivation" rows="4" placeholder="Расскажите о своём интересе к компании и позиции..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ваш ключевой опыт для этой роли</label>
+        <textarea id="applyExperience" rows="3" placeholder="Какие навыки и достижения наиболее релевантны..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ожидаемая зарплата (₽)</label>
+        <input type="number" id="applySalary" placeholder="${job.salary ? job.salary.from : 100000}" />
+      </div>
+      <div id="applyError" class="form-error hidden"></div>
+      <div style="display:flex;gap:10px;margin-top:4px">
+        <button class="btn-primary" style="flex:1" onclick="submitApplication(${job.id})">Отправить отклик</button>
+        <button class="btn-ghost" onclick="closeModal('applyModal')">Отмена</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal('applyModal'); });
+}
+
+function submitApplication(jobId) {
+  const motivation = document.getElementById('applyMotivation').value.trim();
+  const experience = document.getElementById('applyExperience').value.trim();
+  const salary = document.getElementById('applySalary').value;
+  if (!motivation) {
+    const err = document.getElementById('applyError');
+    err.textContent = 'Пожалуйста, напишите сопроводительное письмо';
+    err.classList.remove('hidden');
+    return;
+  }
+  const job = JOBS_DATA.find(j => j.id === jobId);
+  const applications = JSON.parse(localStorage.getItem('wh_applications_' + currentUser.email) || '[]');
+  applications.push({
+    jobId, jobTitle: job.title, company: job.company, logo: job.logo,
+    salary: job.salary, city: job.city, motivation, experience,
+    expectedSalary: salary,
+    appliedAt: new Date().toISOString(),
+    status: 'sent',
+  });
+  localStorage.setItem('wh_applications_' + currentUser.email, JSON.stringify(applications));
+  closeModal('applyModal');
+  closeModal('jobModal');
+  showToast('✅ Отклик отправлен! Следите за статусом в личном кабинете.');
+  simulateStatusProgression(currentUser.email, jobId);
+}
+
+const REJECTION_REASONS = [
+  {
+    category: 'Опыт',
+    reason: 'Недостаточный опыт работы',
+    detail: 'Для данной позиции мы ищем кандидата с опытом от 3 лет в аналогичной роли. Ваш профиль пока не соответствует этому требованию, однако мы рекомендуем откликнуться повторно после накопления необходимого опыта.',
+    tip: 'Рассмотрите вакансии уровня Junior или Middle, чтобы набрать опыт.',
+  },
+  {
+    category: 'Навыки',
+    reason: 'Несоответствие технических навыков',
+    detail: 'К сожалению, требуемый стек технологий в вашем резюме представлен недостаточно. Нам нужен специалист с глубоким знанием ключевых инструментов, указанных в вакансии.',
+    tip: 'Пройдите профильные курсы и добавьте pet-проекты в портфолио.',
+  },
+  {
+    category: 'Зарплата',
+    reason: 'Несоответствие зарплатных ожиданий',
+    detail: 'Ваши зарплатные ожидания выходят за рамки бюджета, выделенного на данную позицию. Мы не готовы предложить компенсацию, соответствующую вашим запросам на текущем этапе.',
+    tip: 'Изучите рыночный уровень зарплат для вашего грейда в данной сфере.',
+  },
+  {
+    category: 'Конкуренция',
+    reason: 'Выбран другой кандидат',
+    detail: 'Мы получили большое количество сильных откликов. К сожалению, финальное решение было принято в пользу кандидата, чей опыт и навыки в наибольшей мере соответствовали нашим требованиям на данный момент.',
+    tip: 'Это не оценка вас как специалиста — следите за новыми вакансиями компании.',
+  },
+  {
+    category: 'Формат',
+    reason: 'Несоответствие формата работы',
+    detail: 'Мы ищем специалиста для работы в офисе, тогда как из вашего отклика следует предпочтение удалённого формата. К сожалению, на данной позиции гибридный или удалённый формат не предусмотрен.',
+    tip: 'Указывайте предпочитаемый формат работы в фильтрах поиска.',
+  },
+];
+
+function simulateStatusProgression(email, jobId) {
+  setTimeout(() => updateApplicationStatus(email, jobId, 'viewed', null), 2000);
+  setTimeout(() => {
+    const roll = Math.random();
+    if (roll > 0.5) {
+      updateApplicationStatus(email, jobId, 'shortlisted', null);
+    } else if (roll > 0.2) {
+      updateApplicationStatus(email, jobId, 'invited', null);
+    } else {
+      const reason = REJECTION_REASONS[Math.floor(Math.random() * REJECTION_REASONS.length)];
+      updateApplicationStatus(email, jobId, 'rejected', reason);
+    }
+  }, 5000);
+}
+
+function updateApplicationStatus(email, jobId, status, rejectionReason) {
+  const applications = JSON.parse(localStorage.getItem('wh_applications_' + email) || '[]');
+  const idx = applications.findIndex(a => a.jobId === jobId);
+  if (idx > -1) {
+    applications[idx].status = status;
+    if (rejectionReason) applications[idx].rejectionReason = rejectionReason;
+    localStorage.setItem('wh_applications_' + email, JSON.stringify(applications));
+    if (!document.getElementById('profileModal').classList.contains('hidden')) renderApplications();
+  }
+}
+
+function showApplyStatus(job) {
+  const applications = JSON.parse(localStorage.getItem('wh_applications_' + currentUser.email) || '[]');
+  const app = applications.find(a => a.jobId === job.id);
+  if (!app) return;
+  const s = getStatusLabel(app.status);
+  showToast('Вы уже откликнулись на эту вакансию. Статус: ' + s.text);
+}
+
+function showToast(msg) {
+  const existing = document.getElementById('whToast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.id = 'whToast';
+  toast.className = 'wh-toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 3500);
+}
+
+function renderActivityBadge(activity) {
+  const colors = { high: 'var(--green)', medium: 'var(--yellow)', low: 'var(--text3)' };
+  const labels = { high: 'Активно отвечает', medium: 'Отвечает', low: 'Медленно отвечает' };
+  const color = colors[activity.level];
+  return `<div class="activity-badge" style="color:${color}"><span class="activity-dot" style="background:${color}"></span>${labels[activity.level]}</div>`;
+}
+
+function renderActivityBlock(activity) {
+  const colors = { high: 'var(--green)', medium: 'var(--yellow)', low: '#ff6b8a' };
+  const color = colors[activity.level];
+  return `
+    <div class="activity-block">
+      <div class="activity-stat"><div class="activity-stat-label">Скорость ответа</div><div class="activity-stat-value" style="color:${color}">${activity.responseTime}</div></div>
+      <div class="activity-stat"><div class="activity-stat-label">Просматривает отклики</div><div class="activity-stat-value" style="color:${color}">${activity.viewRate}%</div></div>
+      <div class="activity-stat"><div class="activity-stat-label">Среднее закрытие вакансии</div><div class="activity-stat-value">${activity.closeTime}</div></div>
+    </div>`;
+}
+
+function getStatusLabel(status) {
+  const map = {
+    sent:        { text: 'Отправлен',    color: 'var(--text3)',  icon: '📤' },
+    viewed:      { text: 'Просмотрен',   color: 'var(--blue)',   icon: '👁' },
+    shortlisted: { text: 'В шорт-листе', color: 'var(--yellow)', icon: '⭐' },
+    invited:     { text: 'Приглашение',  color: 'var(--green)',  icon: '🎉' },
+    rejected:    { text: 'Отказ',        color: '#ff6b8a',       icon: '✕'  },
+  };
+  return map[status] || map.sent;
+}
+
+function renderApplications() {
+  const container = document.getElementById('applicationsContainer');
+  if (!container || !currentUser) return;
+  const applications = JSON.parse(localStorage.getItem('wh_applications_' + currentUser.email) || '[]');
+  if (!applications.length) {
+    container.innerHTML = '<p style="color:var(--text3);font-size:14px">Вы ещё не откликались на вакансии.</p>';
+    return;
+  }
+  const steps = ['sent','viewed','shortlisted','invited'];
+  container.innerHTML = [...applications].reverse().map(app => {
+    const s = getStatusLabel(app.status);
+    const isRejected = app.status === 'rejected';
+    const currentIdx = isRejected ? -1 : steps.indexOf(app.status);
+    const stepsHtml = steps.map((step, i) => {
+      const sl = getStatusLabel(step);
+      const active = i <= currentIdx;
+      return `<div class="status-step"><div class="status-dot" style="${active ? 'background:'+sl.color+';box-shadow:0 0 0 3px '+sl.color+'33' : ''}"></div><div class="status-step-label" style="${active ? 'color:var(--text)' : ''}">${sl.text}</div></div>${i < steps.length-1 ? '<div class="status-line" style="'+(active && i < currentIdx ? 'background:var(--accent)' : '')+'"></div>' : ''}`;
+    }).join('');
+    return `
+      <div class="application-card">
+        <div class="application-header">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="company-logo" style="width:40px;height:40px;font-size:20px">${app.logo}</div>
+            <div>
+              <div style="font-weight:600;font-size:14px">${app.jobTitle}</div>
+              <div style="color:var(--text3);font-size:12px">${app.company}</div>
+            </div>
+          </div>
+          <div class="status-chip" style="color:${s.color};border-color:${s.color}">${s.icon} ${s.text}</div>
+        </div>
+        ${isRejected
+          ? renderRejectionBlock(app.rejectionReason)
+          : '<div class="status-tracker">' + stepsHtml + '</div>'
+        }
+        <div style="font-size:12px;color:var(--text3);margin-top:8px">Отправлен ${new Date(app.appliedAt).toLocaleDateString('ru-RU',{day:'numeric',month:'long'})}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderRejectionBlock(reason) {
+  if (!reason) {
+    return '<div class="rejected-bar"><span class="rejected-icon">✕</span><div><div class="rejected-title">Отказ работодателя</div><div class="rejected-detail">К сожалению, работодатель не готов продолжить рассмотрение вашей кандидатуры.</div></div></div>';
+  }
+  return `
+    <div class="rejected-bar rejected-rich">
+      <div class="rejected-top">
+        <span class="rejected-icon">✕</span>
+        <div>
+          <div class="rejected-category">${reason.category}</div>
+          <div class="rejected-title">${reason.reason}</div>
+        </div>
+      </div>
+      <div class="rejected-detail">${reason.detail}</div>
+      <div class="rejected-tip">
+        <span class="tip-icon">💡</span>
+        <span>${reason.tip}</span>
+      </div>
+    </div>`;
 }
 
 function toggleFavFromModal(id) {
